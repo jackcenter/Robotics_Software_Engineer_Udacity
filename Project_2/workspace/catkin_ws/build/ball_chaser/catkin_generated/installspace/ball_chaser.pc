@@ -1,0 +1,8 @@
+prefix=/home/jackcenter/Documents/Robot_Software_Engineer/Project_2/workspace/catkin_ws/install
+
+Name: ball_chaser
+Description: Description of ball_chaser
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

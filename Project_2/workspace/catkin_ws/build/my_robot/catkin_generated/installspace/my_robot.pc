@@ -1,0 +1,8 @@
+prefix=/home/jackcenter/Documents/Robot_Software_Engineer/Project_2/workspace/catkin_ws/install
+
+Name: my_robot
+Description: Description of my_robot
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
