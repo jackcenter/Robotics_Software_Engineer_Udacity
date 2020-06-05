@@ -19,14 +19,30 @@ void drive_robot(float lin_x, float ang_z)
 void process_image_callback(const sensor_msgs::Image img)
 {
 	int white_pixel = 255;
+	bool is_white = false;
+
 	int index = -1;
 	float pos = -1.0;
 
-	for (int i = 0; i < img.height * img.step; i++)
+	// loop through pixels
+	for (int i = 0; i < img.height * img.width; i++)
 	{
-		if(img.data[i] == white_pixel){
-			index = i % img.step;
-			pos = (float)index / img.step;
+		// loop through rbg values		
+		for (int j = 0; j < 3; j++)
+		{ 	
+			// stop the loop if a value is not white
+			if(img.data[i*3 + j] == white_pixel)
+				is_white = true;
+			else if(img.data[i*3 + j] != white_pixel){
+				is_white = false;
+				break;
+			}
+		}
+		
+		// stop seaching if a white pixel is found
+		if (is_white == true){
+			index = i % img.width;
+			pos = (float)index / img.width;	
 			break;
 		}
 	}
